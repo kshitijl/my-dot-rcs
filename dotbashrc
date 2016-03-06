@@ -1,6 +1,6 @@
 e () {
-    emacsclient -t
+    emacsclient -t "$@"
     if [ $? -ne 0 ]
-    then emacs --daemon; emacsclient -t
+    then emacs --daemon; emacsclient -t "$@"
 	fi
 }
