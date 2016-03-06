@@ -4,3 +4,6 @@ e () {
     then emacs --daemon; emacsclient -t "$@"
 	fi
 }
+
+export VISUAL=emacsclient
+export EDITOR="$VISUAL"
