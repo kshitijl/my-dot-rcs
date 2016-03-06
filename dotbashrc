@@ -1,1 +1,6 @@
-alias e="emacsclient -t"
+e () {
+    emacsclient -t
+    if [ $? -ne 0 ]
+    then emacs --daemon; emacsclient -t
+	fi
+}
