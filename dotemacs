@@ -42,8 +42,9 @@
 (autoload 'gp "pari" nil t)
 ;(autoload 'gpman "pari" nil t)
 
-(add-to-list 'load-path "/usr/local/go/misc/emacs" t)
-(require 'go-mode-load)
+; Go-mode
+;(add-to-list 'load-path "/usr/local/go/misc/emacs" t)
+;(require 'go-mode-load)
 
 ; Tab Stuff
  (setq default-tab-width 4)
