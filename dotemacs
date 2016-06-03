@@ -1,3 +1,4 @@
+; -*- mode: emacs-lisp -*-
 (when (require 'ispell)
   (setq ispell-program-name "aspell"))
 
@@ -36,6 +37,8 @@
 
  (setq c-default-style "bsd"
 	   c-basic-offset 4)
+
+(add-to-list 'auto-mode-alist '("\\.cu\\'" . c++-mode))
 
 (autoload 'gp-mode "pari" nil t)
 (autoload 'gp-script-mode "pari" nil t)
