@@ -7,3 +7,8 @@ e () {
 
 export VISUAL=emacsclient
 export EDITOR="$VISUAL"
+
+alias psall="ps -axjf"
+
+alias remote-google-chrome="DISPLAY=:0 google-chrome"
+alias ipython-server="ipython notebook --ip='*' --no-browser"
