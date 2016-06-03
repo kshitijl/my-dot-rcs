@@ -26,16 +26,16 @@
 		  (lambda () 
 			(setq indent-tabs-mode nil)
 			(setq python-indent 4)
-			(setq tab-width 4)))
+			(setq tab-width 2)))
 
 ; C mode setup
  (add-hook 'c-mode-common-hook '(lambda ()
     (local-set-key (kbd "RET") 'newline-and-indent)
 	(setq indent-tabs-mode nil)
-	(setq c-indent-level 4)))
+	(setq c-indent-level 2)))
 
  (setq c-default-style "bsd"
-	   c-basic-offset 4)
+	   c-basic-offset 2)
 
 (autoload 'gp-mode "pari" nil t)
 (autoload 'gp-script-mode "pari" nil t)
@@ -47,8 +47,10 @@
 ;(require 'go-mode-load)
 
 ; Tab Stuff
- (setq default-tab-width 4)
+ (setq default-tab-width 2)
+ (setq tab-width 2)
  (setq default-indent-tabs-mode nil)
+ (setq c-basic-offset 2)
 
 ; SLIME setup
 ; (add-to-list 'load-path "~/hacking/slime/") ; your SLIME directory
