@@ -12,3 +12,6 @@ alias psall="ps -axjf"
 
 alias remote-google-chrome="DISPLAY=:0 google-chrome"
 alias ipython-server="ipython notebook --ip='*' --no-browser"
+
+export PATH=/usr/local/cuda-8.0/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH

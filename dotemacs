@@ -91,15 +91,24 @@
 
 (defun count-chars-region (start end)
   (interactive "r")
-	  (message "%d characters in region." (- end start)))
+	(message "%d characters in region." (- end start)))
+
+(global-set-key (kbd "<f9>") 'recompile)
 
 (put 'dired-find-alternate-file 'disabled nil)
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (misterioso)))
  '(ido-max-dir-file-cache 0)
  '(tool-bar-mode nil))
 
 (global-set-key "\C-c\C-c" 'count-words-region)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
