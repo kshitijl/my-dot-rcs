@@ -1,0 +1,10 @@
+escape M-Tab
+bind semicolon colon
+bind colon exec
+bind BackSpace nextscreen
+bind f exec firefox
+bind M-c exec xterm -e screen
+bind c exec xterm
+bind Tab focus
+bind M-f fselect
+bind q only

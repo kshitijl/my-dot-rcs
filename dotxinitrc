@@ -1,0 +1,7 @@
+xsetroot -solid gray25
+xrdb ~/.Xresources
+xrandr --output HDMI-0 --scale 0.4x0.4
+setxkbmap -option ctrl:nocaps
+xterm &
+exec ratpoison
+
