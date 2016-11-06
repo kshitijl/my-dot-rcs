@@ -1,7 +1,29 @@
+Emacs.font: Anonymous Pro:antialias=true
+Emacs.FontBackend: xft
+
+Xft.lcdfilter: lcddefault
+Xft.antialias: true
+Xft.autohint: 0
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.rgba: rgb
+Xft.dpi: 268
+
 xterm*faceName: Anonymous Pro:antialias=true
-!xterm*font: *-fixed-*-*-*-20-* 
-xterm*font: 7x13
+xterm*font: 7x12
+XTerm*faceSize:     12
+XTerm*faceSize1:    8
+XTerm*faceSize2:    9
+XTerm*faceSize3:    10
+XTerm*faceSize4:    12
+XTerm*faceSize5:    16
+XTerm*faceSize6:    24
 xterm*borderWidth: 0
+
+*VT100.Translations: #override Ctrl <Btn4Down>: larger-vt-font() \n\
+Ctrl <Btn5Down>: smaller-vt-font() \n\
+Shift Ctrl <Key>=: larger-vt-font() \n\
+Shift Ctrl <Key>-: smaller-vt-font() 
 
 #define t_bg_floor     #010000
 #define t_bg_dip       #2B2B28
