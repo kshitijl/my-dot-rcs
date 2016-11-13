@@ -1,8 +1,17 @@
 e () {
     emacsclient -t "$@"
     if [ $? -ne 0 ]
-    then emacs --daemon; emacsclient -t "$@"
-	fi
+    then
+				emacs --daemon; emacsclient -t "$@"
+		fi
+}
+
+eg() {
+		(nohup emacsclient -c "$@" &)
+		if [ $? -ne 0 ]
+		then
+				emacs --daemon; emacsclient -c "$@"
+		fi
 }
 
 export VISUAL=emacsclient
@@ -15,3 +24,4 @@ alias ipython-server="ipython notebook --ip='*' --no-browser"
 
 export PATH=/usr/local/cuda-8.0/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH
+export CUDA_HOME=/usr/local/cuda
