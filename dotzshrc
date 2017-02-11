@@ -87,6 +87,10 @@ source ~/src/my-dot-rcs/dotbashrc
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.oh-my-zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+
+# Getting emacs tramp (open files over ssh) to work with zsh as
+  default shell
+# https://wxchen.wordpress.com/2012/05/20/getting-tramp-in-emacs-to-work-with-zsh-as-default-shell/
 if [[ "$TERM" == "dumb" ]]
 then
   unsetopt zle
