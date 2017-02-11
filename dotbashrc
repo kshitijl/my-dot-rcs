@@ -21,7 +21,7 @@ alias psall="ps -axjf"
 alias remote-google-chrome="DISPLAY=:0 google-chrome"
 
 # ipython aliases
-alias ip=ipython --no-banner
+alias ip="ipython --no-banner"
 alias ipython-server="ipython notebook --ip='*' --no-browser"
 
 # cuda path setup
