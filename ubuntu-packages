@@ -1,1 +1,1 @@
-emacs build-essential screen mesa-common-dev git freeglut3-dev ipython python-numpy python-scipy openssh-server ratpoison fuse sshfs
+emacs build-essential screen mesa-common-dev git freeglut3-dev ipython python-numpy python-scipy openssh-server ratpoison fuse sshfs autoconf xclip
