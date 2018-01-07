@@ -15,3 +15,9 @@ alias ipython-server="ipython notebook --ip='*' --no-browser"
 
 export PATH=/usr/local/cuda-8.0/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH
+
+# Bring OCaml opam things into the path, or maybe env. Anyway, you
+# need this next line.
+# eval `opam config env`
+
+alias ls='ls -G'

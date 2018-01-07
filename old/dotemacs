@@ -1,6 +1,15 @@
 ; -*- mode: emacs-lisp -*-
-(when (require 'ispell)
-  (setq ispell-program-name "aspell"))
+
+(require 'package) ;; You might already have this line
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize) ;; You might already have this line
+
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
 
 (ido-mode 1)
 
@@ -103,6 +112,9 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (misterioso)))
  '(ido-max-dir-file-cache 0)
+ '(package-selected-packages
+	 (quote
+		(rust-mode markdown-mode helm haskell-mode exec-path-from-shell)))
  '(tool-bar-mode nil))
 
 (global-set-key "\C-c\C-c" 'count-words-region)
@@ -112,3 +124,37 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(load
+   "/Users/kshitijlauria/.opam/system/share/emacs/site-lisp/tuareg-site-file")
+;; tramp mode settings: get it to respect $PATH on the remote machine
+(require 'tramp)
+(add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+
+;; Add opam directory to load-path
+(let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var"
+																										 "share")))))
+	(when (and opam-share (file-directory-p opam-share))
+		;; Register Merlin
+		(add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
+		(autoload 'merlin-mode "merlin" nil t nil)
+		;; Automatically start it in OCaml buffers
+		(add-hook 'tuareg-mode-hook 'merlin-mode t)
+		(add-hook 'caml-mode-hook 'merlin-mode t)
+		;; Use opam switch to lookup ocamlmerlin binary
+		(setq merlin-command 'opam)))
+
+;; ocp-indent
+(add-to-list 'load-path "/Users/kshitijlauria/.opam/system/share/emacs/site-lisp")
+(require 'ocp-indent)
+
+(require 'merlin)
+
+;; helm
+(require 'helm-config)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
+(global-set-key (kbd "C-x C-f") #'helm-find-files)
+
+;; No visible bell
+(setq visible-bell nil)
