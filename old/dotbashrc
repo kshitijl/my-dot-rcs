@@ -1,23 +1,39 @@
 e () {
     emacsclient -t "$@"
     if [ $? -ne 0 ]
-    then emacs --daemon; emacsclient -t "$@"
-	fi
+    then
+				emacs --daemon; emacsclient -t "$@"
+		fi
+}
+
+eg() {
+		(nohup emacsclient -c "$@" &)
+		if [ $? -ne 0 ]
+		then
+				emacs --daemon; emacsclient -c "$@"
+		fi
 }
 
 export VISUAL=emacsclient
 export EDITOR="$VISUAL"
 
 alias psall="ps -axjf"
-
 alias remote-google-chrome="DISPLAY=:0 google-chrome"
-alias ipython-server="ipython notebook --ip='*' --no-browser"
 
-export PATH=/usr/local/cuda-8.0/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH
+# ipython aliases
+alias ip="ipython --no-banner"
+alias ipython-server="ipython notebook --ip='*' --no-browser"
 
 # Bring OCaml opam things into the path, or maybe env. Anyway, you
 # need this next line.
 # eval `opam config env`
 
 alias ls='ls -G'
+
+# cuda path setup
+# CUDA_HOME is usually a symlink to the true installation, which lives
+# somewhere like /usr/local/cuda-8.0/
+export CUDA_HOME=/usr/local/cuda 
+export PATH=$CUDA_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
