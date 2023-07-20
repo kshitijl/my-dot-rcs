@@ -1,0 +1,98 @@
+(when (require 'ispell)
+  (setq ispell-program-name "aspell"))
+
+(ido-mode 1)
+
+(setq sentence-end-double-space nil)
+(setq visible-bell t)
+
+(add-hook 'text-mode-hook
+		  '(lambda ()
+			 (auto-fill-mode)))
+
+(defalias 'qrr 'query-replace-regexp)
+
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(setq inhibit-splash-screen t)
+
+(setq-default ispell-program-name "/usr/local/bin/aspell") 
+(setq-default ispell-list-command "list") 
+
+; Python mode setup
+(add-to-list 'load-path "/Users/kslauria/bin/")
+(add-hook 'python-mode-hook
+		  (lambda () 
+			(setq indent-tabs-mode nil)
+			(setq python-indent 4)
+			(setq tab-width 4)))
+
+; C mode setup
+ (add-hook 'c-mode-common-hook '(lambda ()
+    (local-set-key (kbd "RET") 'newline-and-indent)
+	(setq indent-tabs-mode nil)
+	(setq c-indent-level 4)))
+
+ (setq c-default-style "bsd"
+	   c-basic-offset 4)
+
+(autoload 'gp-mode "pari" nil t)
+(autoload 'gp-script-mode "pari" nil t)
+(autoload 'gp "pari" nil t)
+;(autoload 'gpman "pari" nil t)
+
+(add-to-list 'load-path "/usr/local/go/misc/emacs" t)
+(require 'go-mode-load)
+
+; Tab Stuff
+ (setq default-tab-width 4)
+ (setq default-indent-tabs-mode nil)
+
+; SLIME setup
+; (add-to-list 'load-path "~/hacking/slime/") ; your SLIME directory
+; (setq inferior-lisp-program "/usr/local/bin/sbcl") ; your Lisp system
+; (require 'slime)
+; (slime-setup)
+
+; Font Stuff
+; (put 'downcase-region 'disabled nil)
+; (set-default-font "DejaVu Sans Mono-12")
+;(set-default-font "-outline-Bitstream Vera Sans Mono-normal-r-normal-normal-13-97-96-96-c-*-iso8859-1")
+; (set-default-font "Bitstream Vera Sans Mono-8")
+; (set-default-font "lucidasanstypewriter-8")
+; (set-default-font "Lucida Sans Typewriter-13")
+
+
+; couple functions
+
+(fset 'unfill-buffer
+   [?\M-< ?\M-% ?\C-q ?\C-j ?\C-q ?\C-j return ?% return ?! ?\M-< ?\M-% ?\C-q ?\C-j return ?  return ?! ?\M-< ?\M-% ?% return ?\C-q ?\C-j ?\C-q ?\C-j return ?!])
+
+(defun count-words-region (start end)
+  (interactive "r")
+  (save-excursion
+	(let ((count 0))
+	  (goto-char start)
+	  (while (< (point) end)
+		(forward-word 1)
+		(setq count (+ count 1)))
+	  (message "%d words in region." count))))
+
+(defun count-words-buffer ()
+  (interactive)
+  (count-words-region (point-min) (point-max)))
+
+(defun count-chars-region (start end)
+  (interactive "r")
+	  (message "%d characters in region." (- end start)))
+
+(put 'dired-find-alternate-file 'disabled nil)
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(ido-max-dir-file-cache 0)
+ '(tool-bar-mode nil))
+
+(global-set-key "\C-c\C-c" 'count-words-region)

@@ -93,10 +93,51 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Applications/google-cloud-sdk/path.zsh.inc' ]; then source '/Applications/google-cloud-sdk/path.zsh.inc'; fi
+# detect which platform we're on
+if [[ `uname` == 'Linux' ]]
+then
+    export LINUX=1
+    export GNU_USERLAND=1
+else
+    export LINUX=
+fi
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Applications/google-cloud-sdk/completion.zsh.inc' ]; then source '/Applications/google-cloud-sdk/completion.zsh.inc'; fi
+if [[ `uname` == 'Darwin' ]]
+then
+    export OSX=1
+else
+    export OSX=
+fi
+
+if [[ `hostname` == 'Kshitijs-MacBook-Air.local' ]]
+then
+    # The next line updates PATH for the Google Cloud SDK.
+    if [ -f '/Applications/google-cloud-sdk/path.zsh.inc' ]; then source '/Applications/google-cloud-sdk/path.zsh.inc'; fi
+
+    # The next line enables shell command completion for gcloud.
+    if [ -f '/Applications/google-cloud-sdk/completion.zsh.inc' ]; then source '/Applications/google-cloud-sdk/completion.zsh.inc'; fi
+fi
 
 source ~/.aliases
+
+# history settings
+HISTFILE=~/.zsh_history
+HISTSIZE=999999999
+SAVEHIST=$HISTSIZE
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
+
+# rust setup
+if [[ `hostname` == 'Kshitijs-MacBook-Air.local' ]]
+then
+    export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+    eval `opam config env`
+    export PATH=${PATH}:/usr/local/opt/riscv-gnu-toolchain/bin/
+fi
+
