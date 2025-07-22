@@ -1,0 +1,49 @@
+[keyboard]
+[[keyboard.bindings]]
+chars = "\u001Bb"
+key = "B"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bf"
+key = "F"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bx"
+key = "X"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bw"
+key = "W"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bd"
+key = "d"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B<"
+key = "<"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B>"
+key = ">"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0007"
+key = "G"
+mods = "Control"
+
+[terminal]
+shell = { program = "/Users/kshitijlauria/.cargo/bin/zellij", args = [] }
+
+[window]
+option_as_alt = "Both"
+
+[font]
+size = 16

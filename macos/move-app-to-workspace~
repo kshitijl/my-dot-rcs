@@ -1,0 +1,42 @@
+#!/bin/bash
+
+move_app_to_workspace() {
+  local app_name="$1"
+  local workspace_name="$2"
+
+  if [ -z "$app_name" ] || [ -z "$workspace_name" ]; then
+    echo "Usage: move_app_to_workspace <application_name> <target_workspace>"
+    return 1
+  fi
+
+  echo "Attempting to move '$app_name' to workspace '$workspace_name'..."
+
+  # Get the window-id of the specified application
+  # We use 'head -n 1' in case multiple windows with the same app-name exist,
+  # picking the first one found.
+  local window_id=$(aerospace list-windows --all --json | \
+                    jq -r --arg app "$app_name" '.[] | select(."app-name" == $app) | ."window-id"' | \
+                    head -n 1)
+
+  if [ -z "$window_id" ]; then
+    echo "Error: No window found for application '$app_name'."
+    return 1
+  fi
+
+  # Move the window to the target workspace
+  aerospace move-node-to-workspace --window-id "$window_id" "$workspace_name"
+
+  if [ $? -eq 0 ]; then
+    echo "Successfully moved window (ID: $window_id) of '$app_name' to workspace '$workspace_name'."
+  else
+    echo "Failed to move window (ID: $window_id) of '$app_name' to workspace '$workspace_name'."
+    return 1
+  fi
+}
+
+# --- Examples of how to use the function ---
+
+# Move Firefox to the 'browser' workspace
+# move_app_to_workspace "Firefox" "browser"
+
+move_app_to_workspace "$1" "$2"
