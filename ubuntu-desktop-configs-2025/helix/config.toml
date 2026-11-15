@@ -1,0 +1,74 @@
+
+# Light themes
+# theme = "modus_operandi_tritanopia"
+# theme = "modus_operandi_tinted"
+# theme = "solarized_light"
+# theme = "flatwhite"
+# theme = "github_light"
+# theme = "github_light_high_contrast"
+# theme = "modus_operandi"
+# theme = "gruvbox_light_hard"
+# theme = "papercolor-light"
+#
+# This one makes status bars in unselected windows very hard to read.
+# theme = "seoul256-light-hard"
+# 
+# Dark themes
+theme = "pop-dark"
+# theme = "hex_toxic"
+# theme = "hex_steel"
+# theme = "seoul256-dark-hard"
+# theme = "dracula_at_night"
+# theme = "voxed"
+# theme = "starlight"
+# theme = "snazzy"
+# theme = "sidra"
+# theme = "fleet_dark"
+# theme = "github_dark"
+#
+# This one is good but gw mode is unreadable.
+# theme = "new_moon"
+
+# These themes look good but don't have enough contrast between background and
+# selection, at least on alacritty.
+# theme = "nightfox"
+# theme = "bogster"
+# theme = "horizon-dark"
+# theme = "ashen"
+
+[editor]
+shell = ["bash", "-c"]
+true-color = true
+
+[editor.statusline]
+right = ["diagnostics", "selections", "register", "position", "total-line-numbers", "file-encoding"]
+
+[editor.lsp]
+display-inlay-hints = false
+
+# I'm a big boy now
+[keys.insert]
+up = "no_op"
+down = "no_op"
+left = "no_op"
+right = "no_op"
+pageup = "no_op"
+pagedown = "no_op"
+home = "no_op"
+end = "no_op"
+
+[editor.soft-wrap]
+enable = true
+wrap-indicator = ""
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[keys.normal]
+"-" = ":write"
+0 = ":echo %sh{wc \"%{buffer_name}\"}"
+
+[keys.normal."+"]
+W = ":echo %sh{wc \"%{buffer_name}\"}"

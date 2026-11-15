@@ -1,4 +1,10 @@
 [keyboard]
+
+[[keyboard.bindings]]
+# Work around psychic bug that leaves escape handling in a weird state
+key = "Escape"
+chars = "\u001b"
+
 [[keyboard.bindings]]
 chars = "\u001Bb"
 key = "B"
@@ -46,4 +52,4 @@ shell = { program = "/Users/kshitijlauria/.cargo/bin/zellij", args = [] }
 option_as_alt = "Both"
 
 [font]
-size = 16
+size = 13

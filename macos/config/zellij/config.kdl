@@ -145,9 +145,8 @@ keybinds clear-defaults=true {
         bind "Alt down" { MoveFocus "down"; }
         bind "Alt up" { MoveFocus "up"; }
         bind "Alt right" { MoveFocusOrTab "right"; }
-        bind "Alt +" { Resize "Increase"; }
-        bind "Alt -" { Resize "Decrease"; }
-        bind "Alt =" { Resize "Increase"; }
+        bind "Alt 9" { Resize "Increase"; }
+        bind "Alt 0" { Resize "Decrease"; }
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
         bind "Alt g" { ToggleFloatingPanes; }
@@ -156,8 +155,10 @@ keybinds clear-defaults=true {
         bind "Alt j" { MoveFocus "down"; }
         bind "Alt k" { MoveFocus "up"; }
         bind "Alt l" { MoveFocusOrTab "right"; }
-        bind "Alt n" { NewPane; }
+        bind "Alt n" { NewTab; }
+        bind "Alt p" { NewPane; }
         bind "Alt o" { MoveTab "right"; }
+        bind "Alt r" { SwitchToMode "entersearch"; SearchInput 0; }
     }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl g" { SwitchToMode "locked"; }
@@ -265,7 +266,7 @@ default_mode "locked"
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
 // 
-default_shell "/Users/kshitijlauria/.cargo/bin/nu"
+default_shell "/bin/zsh"
  
 // Choose the path to override cwd that zellij will use for opening new panes
 // 

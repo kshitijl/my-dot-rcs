@@ -1,0 +1,28 @@
+# Ported from ~/.config/alacritty/alacritty.toml on 2026-11-15.
+# Option names checked against `ghostty +show-config --default --docs` (1.4.0).
+
+# Every window runs zellij, as Alacritty did.
+command = direct:/Users/kshitijlauria/.cargo/bin/zellij
+
+macos-option-as-alt = true
+font-size = 13
+# Alacritty's decorations = "Buttonless": no title bar, rounded frame kept.
+macos-titlebar-style = hidden
+window-padding-x = 10
+window-padding-y = 10
+
+# Carried over from Alacritty: work around a psychic bug that leaves escape
+# handling in a weird state. May be unnecessary here; test psychic without it.
+keybind = escape=text:\x1b
+
+# Cmd-letter sends Esc-letter (Alt-letter), as in Alacritty. These replace
+# Ghostty's own Cmd-W (close), Cmd-D (split), Cmd-F (search) etc.; zellij
+# does those jobs.
+keybind = super+b=text:\x1bb
+keybind = super+f=text:\x1bf
+keybind = super+x=text:\x1bx
+keybind = super+w=text:\x1bw
+keybind = super+d=text:\x1bd
+keybind = super+shift+comma=text:\x1b<
+keybind = super+shift+period=text:\x1b>
+keybind = ctrl+g=text:\x07
