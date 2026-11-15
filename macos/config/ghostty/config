@@ -5,7 +5,16 @@
 command = direct:/Users/kshitijlauria/.cargo/bin/zellij
 
 macos-option-as-alt = true
+# Alacritty had no font set, so it used its macOS default, Menlo.
+font-family = Menlo
 font-size = 13
+
+# Cursor swaps the colors of the cell under it, like Alacritty, so it stays
+# visible on light themes (helix papercolor-light) as well as dark ones.
+cursor-color = cell-foreground
+cursor-text = cell-background
+# Alacritty did not blink. Programs can still ask for a blinking cursor.
+cursor-style-blink = false
 # Alacritty's decorations = "Buttonless": no title bar, rounded frame kept.
 macos-titlebar-style = hidden
 window-padding-x = 10
