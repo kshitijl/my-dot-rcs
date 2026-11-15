@@ -35,3 +35,8 @@ keybind = super+d=text:\x1bd
 keybind = super+shift+comma=text:\x1b<
 keybind = super+shift+period=text:\x1b>
 keybind = ctrl+g=text:\x07
+
+# Ghostty's defaults turn Alt-Left/Right into Esc-b/Esc-f (word motion), so
+# zellij never saw Alt-Left/Right (focus or tab left/right). Pass them through.
+keybind = alt+arrow_left=unbind
+keybind = alt+arrow_right=unbind
