@@ -13,8 +13,8 @@ font-size = 13
 # visible on light themes (helix papercolor-light) as well as dark ones.
 cursor-color = cell-foreground
 cursor-text = cell-background
-# Alacritty did not blink. Programs can still ask for a blinking cursor.
-cursor-style-blink = false
+# Blink. Programs can still ask for a steady cursor; helix always does.
+cursor-style-blink = true
 # Alacritty's decorations = "Buttonless": no title bar, rounded frame kept.
 macos-titlebar-style = hidden
 window-padding-x = 10
