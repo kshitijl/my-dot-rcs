@@ -4,7 +4,7 @@
 # theme = "solarized_light"
 # theme = "emacs"
 # theme = "flatwhite"
-# theme = "onelight"
+theme = "onelight"
 # theme = "github_light"
 # theme = "github_light_high_contrast"
 # theme = "modus_operandi"
